@@ -76,6 +76,11 @@ function closeModal(e) {
   document.querySelector('form').reset();
 }
 
+const addBookButton = document.querySelector('.header button');
+addBookButton.addEventListener('click', (e) => {
+  document.querySelector('dialog').showModal();
+});
+
 const dialogCancelButton = document.querySelector('#dialog_cancel');
 dialogCancelButton.addEventListener('click', closeModal);
 
