@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'LT Perfume';
+    src: url('fonts/LTPerfume-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('fonts/QuicksandLight-Regular.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('fonts/QuicksandBook-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('fonts/QuicksandBold-Regular.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+  --color-dark-orange: #DD2E18;
+  --color-bright-orange: #FFAB00;
+  --color-cream: #F2F0EA;
+  --font-size-largest: 4.4rem;
+  --font-size-large: 1.4rem;
+  --font-size-medium: 1.2rem;
+  --font-size-small: 0.9rem;
+  --font-size-smallest: 0.8rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr 50px;
+  background-color: var(--color-bright-orange);
+  font-family: 'Quicksand', sans-serif;
+}
+
+body > div {
+  padding: 10px 150px;
+}
+
+.header {
+  background-color: var(--color-dark-orange);
+  font-size: var(--font-size-largest);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  position: sticky;
+  top: 0;
+}
+
+.header .logo {
+  font-family: 'LT Perfume', sans-serif;
+  margin-bottom: -1rem; 
+}
+
+.header button {
+  font-size: var(--font-size-large);
+  font-family: inherit;
+  color: var(--color-cream);
+  background-color: black;
+  border: none;
+  border-radius: 40px;
+  padding: 20px 30px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+}
+
+.main-content .card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 20px 50px;
+}
+
+.main-content .card-container .card-wrap {
+  background-color: var(--color-dark-orange);
+  border-radius: 10px;
+  padding-left: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.main-content .card-container .card {
+  background-color: var(--color-cream);
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.main-content .card-container .card > div > div {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-size: var(--font-size-small);
+  font-style: italic;
+  color: var(--color-dark-orange);
+  font-weight: bold;
+}
+
+.main-content .card-container .card > div > h2 {
+  font-size: var(--font-size-medium);
+  padding: 4px 0px;
+}
+
+.main-content .card-container .card > div > h3 {
+  font-size: var(--font-size-small);
+  color: var(--color-dark-orange);
+  padding: 4px 0px;
+}
+
+.main-content .card-container .card > div > p {
+  font-size: var(--font-size-small);
+  padding: 4px 0px;
+}
+
+.main-content .card-container .card > div:last-child {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-size: var(--font-size-smallest);
+  font-style: italic;
+}
+
+.footer {
+  background-color: black;
+  color: var(--color-cream);
+  display: grid;
+  place-items: center;
+}
+
+::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    var(--color-cream),
+    var(--color-bright-orange)
+  );
+  opacity: 0.75;
+}
+
+dialog {
+  background-color: var(--color-cream);
+  padding: 10px;
+}
+
+dialog .form-field {
+  padding: 4px 0px;
+}
+
+dialog input,
+dialog textarea {
+  display: block;
+  width: 100%;
+  outline: none;
+}
+
+dialog textarea {
+  height: 4rem;
+}
+
+dialog input:focus-visible,
+dialog textarea:focus-visible {
+  border: 2px solid var(--color-dark-orange);
+}
+
+dialog .dialog-button-container {
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+dialog .dialog-button-container button {
+  font-size: var(--font-size-medium);
+  font-family: inherit;
+  color: var(--color-cream);
+  background-color: var(--color-dark-orange);
+  border: none;
+  border-radius: 40px;
+  padding: 15px 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}

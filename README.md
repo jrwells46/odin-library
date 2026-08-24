@@ -1,1 +1,1 @@
-# odin-library
+This project is meant to be a demo of basic JavaScript functionality.

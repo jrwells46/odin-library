@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIbrary</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <script src="javascript.js" defer></script>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Library</div>
+    <button command="show-modal" commandfor="add-book-dialog">Add book</button>
+  </div>
+  <div class="main-content">
+    <div class="card-container">
+      <div class="card-wrap">
+        <div class="card">
+          <div>
+            <div>unread</div>
+            <h2>A Memory Called Empire</h2>
+            <h3>by Arkady Martine</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque accusantium quaerat impedit officia nesciunt quod ullam perferendis magnam labore ea, ad eaque. Hic quidem possimus quod iusto, error dolorem dicta.</p>
+          </div>
+          <div>480 pages</div>
+        </div>
+      </div>
+      <div class="card-wrap">
+        <div class="card">
+          <div>
+            <div>read</div>
+            <h2>Black Wings Has My Angel</h2>
+            <h3>by Elliott Chaze</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, rerum! Blanditiis perspiciatis nobis non officia, ea quasi. Tempore totam deserunt ut quisquam voluptatem, aliquid fugiat tempora magni voluptatibus, quia distinctio.</p>
+          </div>
+          <div>154 pages</div>
+        </div>
+      </div>
+      <div class="card-wrap">
+        <div class="card">
+          <div>
+            <div>read</div>
+            <h2>The Night Watchman</h2>
+            <h3>by Louise Erdrich</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum qui doloribus aspernatur, aperiam sequi sint magnam laboriosam, tempore soluta non aut sed placeat velit omnis, sit explicabo provident voluptatibus voluptatum!</p>
+          </div>
+          <div>464 pages</div>
+        </div>
+      </div>
+      <div class="card-wrap">
+        <div class="card">
+          <div>
+            <div>unread</div>
+            <h2>From Hell</h2>
+            <h3>by Alan Moore and Eddie Campbell</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium neque molestiae hic, nobis omnis, quae corrupti eum sit quasi dolores excepturi aperiam consequatur. Quae, at possimus! Inventore rem id officia.</p>
+          </div>
+          <div>565 pages</div>
+        </div>
+      </div>
+      <div class="card-wrap">
+        <div class="card">
+          <div>
+            <div>read</div>
+            <h2>How To Be a Victorian</h2>
+            <h3>by Ruth Goodman</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolorem, quibusdam architecto minima aliquam commodi impedit voluptatum adipisci! Dolorem, ad expedita. Voluptatem ex similique dignissimos ad fugit dicta, accusantium ea.</p>
+          </div>
+          <div>480 pages</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Copyright © jrwells46 2026</div>
+  <dialog id="add-book-dialog">
+    <form>
+      <h3>Add a book...</h3>
+
+      <div class="form-field">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" maxlength="100" required>
+      </div>
+
+      <div class="form-field">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" maxlength="100" required>
+      </div>
+
+      <div class="form-field">
+        <label for="page_count">Page count</label>
+        <input type="number" id="page_count" name="page_count" min="1" max="5000" required>
+      </div>
+
+      <div class="form-field">
+        <label for="title">Summary</label>
+        <textarea id="summary" name="summary" required></textarea>
+      </div>
+
+      <div class="dialog-button-container">
+        <button value="cancel" formmethod="dialog" formnovalidate>Cancel</button>
+        <button id="confirmBtn" value="default">Add</button>
+      </div>
+    </form>
+
+  </dialog>
+</body>
+</html>
