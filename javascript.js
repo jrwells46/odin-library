@@ -9,7 +9,12 @@ function Book(title, author, pageCount, summary) {
   this.author = author;
   this.pageCount = pageCount;
   this.summary = summary;
+  this.isRead = false;
 }
+
+Book.prototype.toggleReadStatus = function() {
+  this.isRead = !this.isRead;
+};
 
 function addBookToLibrary(title, author, pageCount, summary) {
   myLibrary.push(new Book(title, author, pageCount, summary));
@@ -32,7 +37,11 @@ function addCardToContainer(cardContainer, book) {
   card.className = 'card';
 
   const cardUpperContent = document.createElement('div');
-  appendNewElementWithText(cardUpperContent, 'div', 'unread');
+  const readStatusWrapper = document.createElement('div');
+
+  appendNewElementWithText(readStatusWrapper, 'button', book.isRead ? 'read' : 'unread', book.id);
+  cardUpperContent.appendChild(readStatusWrapper);
+
   appendNewElementWithText(cardUpperContent, 'h2', book.title);
   appendNewElementWithText(cardUpperContent, 'h3', `by ${book.author}`);
   appendNewElementWithText(cardUpperContent, 'p', book.summary);
@@ -79,8 +88,15 @@ dialogSubmitButton.addEventListener('click', (e) => {
 dialogCancelButton.addEventListener('click', closeModal);
 
 cardContainer.addEventListener('click', (e) => {
-  if (e.target.matches('.card button')) {
+  if (e.target.matches('.card > div:nth-child(2) > button')) {
     removeBookFromLibrary(e.target.dataset.id);
+    refreshLibrary();
+  }
+});
+
+cardContainer.addEventListener('click', (e) => {
+  if (e.target.matches('.card > div:first-child > div > button')) {
+    myLibrary.find(book => book.id === e.target.dataset.id).toggleReadStatus();
     refreshLibrary();
   }
 });
