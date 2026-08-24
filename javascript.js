@@ -4,6 +4,7 @@ function Book(title, author, pageCount, summary) {
   if (!new.target) {
     throw Error('Book constructor must be used with new keyword.');
   }
+  this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
   this.pageCount = pageCount;
@@ -14,8 +15,14 @@ function addBookToLibrary(title, author, pageCount, summary) {
   myLibrary.push(new Book(title, author, pageCount, summary));
 }
 
+function removeBookFromLibrary(id) {
+  const index = myLibrary.findIndex(book => book.id === id);
+  myLibrary.splice(index, 1); 
+}
+
+const cardContainer = document.querySelector('.card-container');
+
 function refreshLibrary() {
-  const cardContainer = document.querySelector('.card-container');
   cardContainer.replaceChildren();
   myLibrary.forEach(book => addCardToContainer(cardContainer, book));
 }
@@ -31,7 +38,10 @@ function addCardToContainer(cardContainer, book) {
   appendNewElementWithText(cardUpperContent, 'p', book.summary);
   card.appendChild(cardUpperContent);
 
-  appendNewElementWithText(card, 'div', `${book.pageCount} pages`);
+  const cardLowerContent = document.createElement('div');
+  appendNewElementWithText(cardLowerContent, 'div', `${book.pageCount} pages`);
+  appendNewElementWithText(cardLowerContent, 'button', 'Remove', book.id);
+  card.appendChild(cardLowerContent);
 
   const cardWrap = document.createElement('div');
   cardWrap.className = 'card-wrap';
@@ -39,9 +49,10 @@ function addCardToContainer(cardContainer, book) {
   cardContainer.appendChild(cardWrap);
 }
 
-function appendNewElementWithText(parent, newElementType, text) {
+function appendNewElementWithText(parent, newElementType, text, id) {
   const newElement = document.createElement(newElementType);
   newElement.textContent = text;
+  if (id) newElement.setAttribute('data-id', id);
   parent.append(newElement);
 }
 
@@ -66,3 +77,10 @@ dialogSubmitButton.addEventListener('click', (e) => {
 });
 
 dialogCancelButton.addEventListener('click', closeModal);
+
+cardContainer.addEventListener('click', (e) => {
+  if (e.target.matches('.card button')) {
+    removeBookFromLibrary(e.target.dataset.id);
+    refreshLibrary();
+  }
+});

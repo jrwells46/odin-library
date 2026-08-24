@@ -120,10 +120,11 @@ body > div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 4px;
   padding: 10px;
 }
 
-.main-content .card-container .card > div > div {
+.main-content .card-container .card > div:first-child > div {
   display: flex;
   justify-content: end;
   align-items: center;
@@ -133,28 +134,42 @@ body > div {
   font-weight: bold;
 }
 
-.main-content .card-container .card > div > h2 {
+.main-content .card-container .card > div:first-child > h2 {
   font-size: var(--font-size-medium);
   padding: 4px 0px;
 }
 
-.main-content .card-container .card > div > h3 {
+.main-content .card-container .card > div:first-child > h3 {
   font-size: var(--font-size-small);
   color: var(--color-dark-orange);
   padding: 4px 0px;
 }
 
-.main-content .card-container .card > div > p {
+.main-content .card-container .card > div:first-child > p {
   font-size: var(--font-size-small);
   padding: 4px 0px;
 }
 
-.main-content .card-container .card > div:last-child {
+.main-content .card-container .card > div:nth-child(2) {
   display: flex;
-  justify-content: end;
+  justify-content: space-around;
   align-items: center;
+}
+
+.main-content .card-container .card > div:nth-child(2) > div {
   font-size: var(--font-size-smallest);
   font-style: italic;
+  /* required to line up text of div with text of button */
+  margin-bottom: -0.3rem;
+}
+
+.main-content .card-container .card > div:nth-child(2) > button {
+  border: none;
+  color: var(--color-dark-orange);
+  font-size: var(--font-size-smallest);
+  font-family: inherit;
+  padding: 4px 10px 0px;
+  cursor: pointer;
 }
 
 .footer {
