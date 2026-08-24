@@ -76,25 +76,22 @@ function closeModal(e) {
   document.querySelector('form').reset();
 }
 
-const dialogSubmitButton = document.querySelector('#dialog_confirm');
 const dialogCancelButton = document.querySelector('#dialog_cancel');
+dialogCancelButton.addEventListener('click', closeModal);
 
-dialogSubmitButton.addEventListener('click', (e) => {
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
   addBookToLibrary(getValueById('title'), getValueById('author'), getValueById('page_count'), getValueById('summary'));
   closeModal(e);
   refreshLibrary();
 });
-
-dialogCancelButton.addEventListener('click', closeModal);
 
 cardContainer.addEventListener('click', (e) => {
   if (e.target.matches('.card > div:nth-child(2) > button')) {
     removeBookFromLibrary(e.target.dataset.id);
     refreshLibrary();
   }
-});
 
-cardContainer.addEventListener('click', (e) => {
   if (e.target.matches('.card > div:first-child > div > button')) {
     myLibrary.find(book => book.id === e.target.dataset.id).toggleReadStatus();
     refreshLibrary();
