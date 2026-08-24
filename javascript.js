@@ -17,10 +17,10 @@ function addBookToLibrary(title, author, pageCount, summary) {
 function refreshLibrary() {
   const cardContainer = document.querySelector('.card-container');
   cardContainer.replaceChildren();
-  myLibrary.forEach(book => addCardToContainer(book));
+  myLibrary.forEach(book => addCardToContainer(cardContainer, book));
 }
 
-function addCardToContainer(book) {
+function addCardToContainer(cardContainer, book) {
   const card = document.createElement('div');
   card.className = 'card';
 
@@ -33,7 +33,10 @@ function addCardToContainer(book) {
 
   appendNewElementWithText(card, 'div', `${book.pageCount} pages`);
 
-  cardContainer.appendChild(card);
+  const cardWrap = document.createElement('div');
+  cardWrap.className = 'card-wrap';
+  cardWrap.appendChild(card);
+  cardContainer.appendChild(cardWrap);
 }
 
 function appendNewElementWithText(parent, newElementType, text) {
@@ -41,3 +44,25 @@ function appendNewElementWithText(parent, newElementType, text) {
   newElement.textContent = text;
   parent.append(newElement);
 }
+
+function getValueById(id) {
+  const formField = document.querySelector(`#${id}`);
+  return formField.value.trim();
+}
+
+function closeModal(e) {
+  e.preventDefault();
+  document.querySelector('dialog').close();
+  document.querySelector('form').reset();
+}
+
+const dialogSubmitButton = document.querySelector('#dialog_confirm');
+const dialogCancelButton = document.querySelector('#dialog_cancel');
+
+dialogSubmitButton.addEventListener('click', (e) => {
+  addBookToLibrary(getValueById('title'), getValueById('author'), getValueById('page_count'), getValueById('summary'));
+  closeModal(e);
+  refreshLibrary();
+});
+
+dialogCancelButton.addEventListener('click', closeModal);

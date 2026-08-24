@@ -92,15 +92,17 @@ body > div {
 }
 
 .main-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: min(1000px, 100%);
   justify-content: center;
 }
 
 .main-content .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-auto-rows: max-content;
   gap: 30px;
-  padding: 20px 50px;
+  padding: 20px 0px;
 }
 
 .main-content .card-container .card-wrap {
